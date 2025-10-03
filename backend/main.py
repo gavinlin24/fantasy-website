@@ -15,3 +15,5 @@ league = League(
     espn_s2=espn_s2,
     swid=swid
 )
+
+print(league.settings)
