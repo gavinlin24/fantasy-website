@@ -1,0 +1,2 @@
+espn_api @ git+https://github.com/cwendt94/espn-api.git@02fec550263539aac6197ca04d00f73bbb562b3b
+python-dotenv==1.0.1
