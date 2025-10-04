@@ -1,2 +1,29 @@
-*/.env
+# Byte-compiled / cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
 venv/
+
+# Environment files
+**/.env*
+.env
+
+# Python package distribution
+*.egg-info/
+dist/
+build/
+
+# IDE/editor configs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
