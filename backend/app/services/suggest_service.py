@@ -74,7 +74,7 @@ def parse_advice_to_json(advice_text, teams):
     
     return advice_list
 
-def get_league_advice():
+def get_league_suggestions():
     """Get one piece of advice for each team in the league."""
     data = get_all_teams_data()
     
@@ -125,6 +125,6 @@ REASONING: [Brief 1-2 sentence explanation]
         }
 
 if __name__ == "__main__":
-    advice = get_league_advice()
+    advice = get_league_suggestions()
     import json
     print(json.dumps(advice, indent=2))

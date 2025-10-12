@@ -17,5 +17,3 @@ def get_latest_news():
             })
     
     return news
-
-print(get_latest_news())
