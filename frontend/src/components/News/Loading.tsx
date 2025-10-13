@@ -5,7 +5,7 @@ export function Loading() {
     <Box
       sx={{
         minHeight: "100vh",
-        background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+        background: "black",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -22,7 +22,7 @@ export function Loading() {
       >
         <CircularProgress size={60} thickness={4} />
         <Typography variant="h6" sx={{ mt: 3, color: "text.secondary" }}>
-          Loading news...
+          Loading...
         </Typography>
       </Paper>
     </Box>

@@ -11,7 +11,7 @@ export function ErrorState({
     <Box
       sx={{
         minHeight: "100vh",
-        background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+        background: "black",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
