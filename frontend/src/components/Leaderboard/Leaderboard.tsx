@@ -41,7 +41,7 @@ export default function Leaderboard() {
     <Box
       sx={{
         minHeight: "100vh",
-        background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+        background: "black",
         py: 6,
         px: { xs: 2, sm: 4 },
         overflowX: "hidden",

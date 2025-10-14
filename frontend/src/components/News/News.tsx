@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { Box, Container, Stack } from "@mui/material";
 import { fetchNews } from "../../api/api";
-import { Loading } from "./Loading";
-import { ErrorState } from "./ErrorState";
+import { LoadingState } from "../States/LoadingState";
+import { ErrorState } from "../States/ErrorState";
 import { Header } from "./Header";
 import { SummaryCards } from "./SummaryCards";
 import { NewsCard } from "./NewsCard";
@@ -50,8 +50,8 @@ export default function News() {
     return sortedTeams.length > 0 ? sortedTeams[0] : null;
   };
 
-  if (loading) return <Loading />;
-  if (error) return <ErrorState error={error} onRetry={loadNews} />;
+  if (loading) return <LoadingState />;
+  if (error) return <ErrorState error={error} />;
 
   const addedCount = news.filter((n) => n.action.includes("ADDED")).length;
   const droppedCount = news.filter((n) => n.action.includes("DROPPED")).length;

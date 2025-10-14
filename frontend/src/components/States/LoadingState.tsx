@@ -1,6 +1,6 @@
 import { Box, Paper, CircularProgress, Typography } from "@mui/material";
 
-export function Loading() {
+export function LoadingState() {
   return (
     <Box
       sx={{
