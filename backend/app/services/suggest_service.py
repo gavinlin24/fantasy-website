@@ -80,21 +80,21 @@ def get_league_suggestions():
     
     prompt = """You are a fantasy basketball expert advisor. Analyze each team's roster and provide EXACTLY ONE actionable suggestion per team.
 
-For each team, provide ONE of the following:
-1. DROP/PICKUP: Suggest dropping one player and picking up a specific free agent
-2. TRADE: Suggest a specific trade with another team in the league
-3. HOLD: If the team is solid, say their roster is good as is
+    For each team, provide ONE of the following:
+    1. DROP/PICKUP: Suggest dropping one player and picking up a specific free agent
+    2. TRADE: Suggest a specific trade with another team in the league
+    3. HOLD: If the team is solid, say their roster is good as is
 
-Format your response EXACTLY like this for each team:
+    Format your response EXACTLY like this for each team:
 
-TEAM: [Team Name]
-ACTION: [DROP/PICKUP or TRADE or HOLD]
-SUGGESTION: [Specific recommendation]
-REASONING: [Brief 1-2 sentence explanation]
+    TEAM: [Team Name]
+    ACTION: [DROP/PICKUP or TRADE or HOLD]
+    SUGGESTION: [Specific recommendation]
+    REASONING: [Brief 1-2 sentence explanation]
 
----
+    ---
 
-"""
+    """
     
     for i, team in enumerate(data['teams'], 1):
         prompt += f"\n=== TEAM {i}: {team['team_name']} ===\n"
