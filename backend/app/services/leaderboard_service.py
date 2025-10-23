@@ -28,7 +28,7 @@ def get_player_leaderboard():
             players.append({
                 "player_name": player.name,
                 "team": team.team_name,
-                "fantasy_points": player.stats.get("applied_total", 0)
+                "fantasy_points": player.total_points
             })
     players.sort(key=lambda player: player["fantasy_points"], reverse=True)
     return players
