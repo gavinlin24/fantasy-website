@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { Box, Typography, Stack } from "@mui/material";
-import { LoadingState } from "../States/LoadingState";
-import { ErrorState } from "../States/ErrorState";
 import { fetchSuggestions } from "../../api/api";
+import LoadingState from "../States/LoadingState";
+import ErrorState from "../States/ErrorState";
 import TeamList from "./TeamList";
 import TeamDetails from "./TeamDetails";
 import TeamRoster from "./TeamRoster";

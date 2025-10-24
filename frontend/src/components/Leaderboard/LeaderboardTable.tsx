@@ -35,12 +35,12 @@ interface LeaderboardTableProps {
   onImageError: (name: string) => void;
 }
 
-export default function LeaderboardTable({
+const LeaderboardTable = ({
   data,
   type,
   imageErrors,
   onImageError,
-}: LeaderboardTableProps) {
+}: LeaderboardTableProps) => {
   const getRankColor = (rank: number) => {
     if (rank === 1) return "#FFD700";
     if (rank === 2) return "#C0C0C0";
@@ -231,4 +231,6 @@ export default function LeaderboardTable({
       </Table>
     </TableContainer>
   );
-}
+};
+
+export default LeaderboardTable;

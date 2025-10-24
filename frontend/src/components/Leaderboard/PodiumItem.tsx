@@ -10,7 +10,7 @@ interface PodiumItemProps {
   imageError: boolean;
 }
 
-export default function PodiumItem({
+const PodiumItem = ({
   name,
   subtitle,
   rank,
@@ -18,7 +18,7 @@ export default function PodiumItem({
   isTeam,
   onImageError,
   imageError,
-}: PodiumItemProps) {
+}: PodiumItemProps) => {
   const getRankColor = (rank: number) => {
     if (rank === 1) return "#FFD700";
     if (rank === 2) return "#C0C0C0";
@@ -132,4 +132,6 @@ export default function PodiumItem({
       </Box>
     </Box>
   );
-}
+};
+
+export default PodiumItem;

@@ -1,6 +1,6 @@
 import { Paper, Typography } from "@mui/material";
 
-export function Empty() {
+const Empty = () => {
   return (
     <Paper elevation={3} sx={{ p: 8, textAlign: "center", borderRadius: 4 }}>
       <Typography variant="h4" gutterBottom>
@@ -11,4 +11,6 @@ export function Empty() {
       </Typography>
     </Paper>
   );
-}
+};
+
+export default Empty;

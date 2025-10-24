@@ -20,7 +20,7 @@ interface Player {
   fantasy_points: number;
 }
 
-export default function Leaderboard() {
+const Leaderboard = () => {
   const [teams, setTeams] = useState<Team[]>([]);
   const [players, setPlayers] = useState<Player[]>([]);
   const [imageErrors, setImageErrors] = useState<Set<string>>(new Set());
@@ -135,4 +135,6 @@ export default function Leaderboard() {
       </Box>
     </Box>
   );
-}
+};
+
+export default Leaderboard;

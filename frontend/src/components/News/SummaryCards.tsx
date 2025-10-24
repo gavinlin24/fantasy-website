@@ -1,6 +1,6 @@
 import { Box, Card, CardContent, Typography } from "@mui/material";
 
-export function SummaryCards({
+const SummaryCards = ({
   addedCount,
   droppedCount,
   tradedCount,
@@ -10,7 +10,7 @@ export function SummaryCards({
   droppedCount: number;
   tradedCount: number;
   mostActiveTeam: [string, number] | null;
-}) {
+}) => {
   return (
     <Box sx={{ display: "flex", flexWrap: "wrap", gap: 3, mb: 4 }}>
       <Box sx={{ flex: "1 1 calc(25% - 18px)", minWidth: "200px" }}>
@@ -89,4 +89,6 @@ export function SummaryCards({
       </Box>
     </Box>
   );
-}
+};
+
+export default SummaryCards;

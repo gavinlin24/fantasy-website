@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { Box, Container, Stack } from "@mui/material";
 import { fetchNews } from "../../api/api";
-import { LoadingState } from "../States/LoadingState";
-import { ErrorState } from "../States/ErrorState";
-import { Header } from "./Header";
-import { SummaryCards } from "./SummaryCards";
-import { NewsCard } from "./NewsCard";
-import { Empty } from "./Empty";
+import LoadingState from "../States/LoadingState";
+import ErrorState from "../States/ErrorState";
+import Header from "./Header";
+import SummaryCards from "./SummaryCards";
+import NewsCard from "./NewsCard";
+import Empty from "./Empty";
 
 export interface NewsItem {
   date: number;
@@ -15,7 +15,7 @@ export interface NewsItem {
   player: string;
 }
 
-export default function News() {
+const News = () => {
   const [news, setNews] = useState<NewsItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -85,4 +85,6 @@ export default function News() {
       </Container>
     </Box>
   );
-}
+};
+
+export default News;

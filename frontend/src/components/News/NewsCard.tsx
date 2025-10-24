@@ -16,7 +16,7 @@ export interface NewsItem {
   player: string;
 }
 
-export function NewsCard({ item }: { item: NewsItem }) {
+const NewsCard = ({ item }: { item: NewsItem }) => {
   return (
     <Card
       elevation={3}
@@ -54,4 +54,6 @@ export function NewsCard({ item }: { item: NewsItem }) {
       </CardContent>
     </Card>
   );
-}
+};
+
+export default NewsCard;

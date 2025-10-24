@@ -1,6 +1,6 @@
 import { Paper, Stack, Box, Typography } from "@mui/material";
 
-export function Header() {
+const Header = () => {
   return (
     <Paper
       elevation={4}
@@ -19,4 +19,6 @@ export function Header() {
       </Stack>
     </Paper>
   );
-}
+};
+
+export default Header;

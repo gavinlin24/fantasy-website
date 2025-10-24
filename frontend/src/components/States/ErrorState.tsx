@@ -1,6 +1,6 @@
 import { Box, Paper, Alert } from "@mui/material";
 
-export function ErrorState({ error }: { error: string }) {
+const ErrorState = ({ error }: { error: string }) => {
   return (
     <Box
       sx={{
@@ -17,4 +17,6 @@ export function ErrorState({ error }: { error: string }) {
       </Paper>
     </Box>
   );
-}
+};
+
+export default ErrorState;

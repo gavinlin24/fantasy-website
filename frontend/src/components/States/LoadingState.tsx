@@ -1,6 +1,6 @@
 import { Box, Paper, CircularProgress, Typography } from "@mui/material";
 
-export function LoadingState() {
+const LoadingState = () => {
   return (
     <Box
       sx={{
@@ -27,4 +27,6 @@ export function LoadingState() {
       </Paper>
     </Box>
   );
-}
+};
+
+export default LoadingState;
