@@ -22,6 +22,18 @@ interface TeamDetailsProps {
 }
 
 const TeamDetails = ({ team }: TeamDetailsProps) => {
+  const getChipColor = (actionType: string) => {
+    const action = actionType.toUpperCase();
+    if (action.includes("DROP")) {
+      return "warning";
+    } else if (action === "TRADE") {
+      return "info";
+    } else if (action === "HOLD") {
+      return "success";
+    }
+    return "default";
+  };
+
   return (
     <Box
       sx={{
@@ -35,7 +47,7 @@ const TeamDetails = ({ team }: TeamDetailsProps) => {
         <Typography variant="h5" color="black" fontWeight="bold">
           {team.team}
         </Typography>
-        <Chip label={team.action_type} color="primary" />
+        <Chip label={team.action_type} color={getChipColor(team.action_type)} />
       </Stack>
       <Box sx={{ mb: 2 }}>
         <Typography color="text.secondary" fontSize={14} fontWeight="bold">

@@ -55,7 +55,6 @@ const TeamRoster = ({ roster }: TeamRosterProps) => {
               justifyContent: "space-between",
               bgcolor: "rgba(0,0,0,0.03)",
               border: "1px solid rgba(0,0,0,0.1)",
-              "&:hover": { bgcolor: "rgba(0,0,0,0.05)" },
             }}
           >
             <Box>
