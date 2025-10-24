@@ -55,6 +55,7 @@ def parse_advice_to_json(advice_text, teams):
             break
             
         team_name = teams[i]['team_name']
+        roster = teams[i]['roster']
         
         action_match = re.search(r'ACTION:\s*(\w+(?:/\w+)?)', section)
         action = action_match.group(1) if action_match else "HOLD"
@@ -69,7 +70,8 @@ def parse_advice_to_json(advice_text, teams):
             "team": team_name,
             "action_type": action,
             "suggestion": suggestion,
-            "reasoning": reasoning
+            "reasoning": reasoning,
+            "roster": roster
         })
     
     return advice_list
