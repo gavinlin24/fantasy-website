@@ -38,7 +38,7 @@ export async function fetchPlayerLeaderboard() {
 
 export async function fetchNews() {
   try {
-    const response = await axios.get(`${API_BASE_URL}/news`);
+    const response = await axios.get(`${API_BASE_URL}/news/`);
     return response.data;
   } catch (error) {
     if (axios.isAxiosError(error)) {
@@ -53,7 +53,7 @@ export async function fetchNews() {
 
 export async function fetchSuggestions() {
   try {
-    const response = await axios.get(`${API_BASE_URL}/suggest`);
+    const response = await axios.get(`${API_BASE_URL}/suggest/`);
     return response.data;
   } catch (error) {
     if (axios.isAxiosError(error)) {
