@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { fetchTeamLeaderboard, fetchPlayerLeaderboard } from "../../api/api";
 import { Box, Typography } from "@mui/material";
+import LoadingState from "../States/LoadingState";
+import ErrorState from "../States/ErrorState";
 import PodiumItem from "./PodiumItem";
 import LeaderboardTable from "./LeaderboardTable";
 
@@ -24,11 +26,34 @@ const Leaderboard = () => {
   const [teams, setTeams] = useState<Team[]>([]);
   const [players, setPlayers] = useState<Player[]>([]);
   const [imageErrors, setImageErrors] = useState<Set<string>>(new Set());
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetchTeamLeaderboard().then(setTeams);
-    fetchPlayerLeaderboard().then(setPlayers);
+    const loadData = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+
+        const [teamData, playerData] = await Promise.all([
+          fetchTeamLeaderboard(),
+          fetchPlayerLeaderboard(),
+        ]);
+
+        setTeams(teamData);
+        setPlayers(playerData);
+      } catch {
+        setError("Failed to load leaderboard data.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadData();
   }, []);
+
+  if (loading) return <LoadingState />;
+  if (error) return <ErrorState error={error} />;
 
   const handleImageError = (name: string) => {
     setImageErrors((prev) => new Set(prev).add(name));
