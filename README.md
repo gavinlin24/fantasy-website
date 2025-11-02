@@ -19,5 +19,5 @@ FastAPI • React (Vite) • Tailwind CSS • Google Gemini API • ESPN Fantasy
 ## Future Enhancements
 
 - [ ] OAuth-based user authentication  
-- [ ] Multi-league dashboard  
-- [ ] Predictive analytics using historical player trends  
+- [ ] Predictive analytics using historical player trends
+- [ ] Trade Value Calculator — Multi-category trade evaluation
