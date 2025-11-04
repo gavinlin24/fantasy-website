@@ -3,6 +3,7 @@ import Leaderboard from "./components/Leaderboard/Leaderboard";
 import News from "./components/News/News";
 import Insights from "./components/Insights/Insights";
 import Navbar from "./components/Navbar/Navbar";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/leaderboard" element={<Leaderboard />} />
         <Route path="/insights" element={<Insights />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }
