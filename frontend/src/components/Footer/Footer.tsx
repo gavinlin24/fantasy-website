@@ -25,7 +25,6 @@ const Footer = () => {
           gap: 2,
         }}
       >
-        {/* Left side - Name and copyright */}
         <Typography
           variant="body2"
           sx={{
@@ -38,7 +37,7 @@ const Footer = () => {
 
         <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
           <Link
-            href="https://github.com/yourusername/fantasy-insights"
+            href="https://github.com/gavinlin24/fantasy-insights"
             target="_blank"
             rel="noopener noreferrer"
             sx={{
