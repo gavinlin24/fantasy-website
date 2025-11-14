@@ -78,53 +78,61 @@ def parse_advice_to_json(advice_text, teams):
 
 def get_league_suggestions():
     """Get one piece of advice for each team in the league."""
-    data = get_all_teams_data()
-    
-    prompt = """You are a fantasy basketball expert advisor. Analyze each team's roster and provide EXACTLY ONE actionable suggestion per team.
-
-    For each team, provide ONE of the following:
-    1. DROP/PICKUP: Suggest dropping one player and picking up a specific free agent
-    2. TRADE: Suggest a specific trade with another team in the league
-    3. HOLD: If the team is solid, say their roster is good as is
-
-    Format your response EXACTLY like this for each team:
-
-    TEAM: [Team Name]
-    ACTION: [DROP/PICKUP or TRADE or HOLD]
-    SUGGESTION: [Specific recommendation]
-    REASONING: [Brief 1-2 sentence explanation]
-
-    ---
-
-    """
-    
-    for i, team in enumerate(data['teams'], 1):
-        prompt += f"\n=== TEAM {i}: {team['team_name']} ===\n"
-        prompt += "ROSTER:\n"
-        for player in team['roster']:
-            status = " (INJURED)" if player['injured'] else ""
-            prompt += f"- {player['name']} ({player['position']}, {player['team']}){status} - Avg: {player['avg_points']:.1f} pts\n"
-    
-    prompt += "\n=== TOP 20 AVAILABLE FREE AGENTS ===\n"
-    for player in data['free_agents']:
-        prompt += f"- {player['name']} ({player['position']}, {player['team']}) - Avg: {player['avg_points']:.1f} pts\n"
-    
-    prompt += "\n\nNow provide ONE actionable suggestion for EACH team listed above."
-
     try:
+        data = get_all_teams_data()
+        
+        prompt = """You are a fantasy basketball expert advisor. Analyze each team's roster and provide EXACTLY ONE actionable suggestion per team 
+        by considering how each team can maximize their fantasy points. 
+
+        For each team, provide ONE of the following:
+        1. DROP/PICKUP: Suggest dropping one player and picking up a specific free agent
+        2. TRADE: Suggest a specific trade with another team in the league that would benefit both teams
+        3. HOLD: If the team is solid, say their roster is good as is
+
+        Format your response EXACTLY like this for each team:
+
+        TEAM: [Team Name]
+        ACTION: [DROP/PICKUP or TRADE or HOLD]
+        SUGGESTION: [Specific recommendation]
+        REASONING: [Brief 1-2 sentence explanation]
+
+        ---
+
+        """
+        
+        for i, team in enumerate(data['teams'], 1):
+            prompt += f"\n=== TEAM {i}: {team['team_name']} ===\n"
+            prompt += "ROSTER:\n"
+            for player in team['roster']:
+                status = " (INJURED)" if player['injured'] else ""
+                prompt += f"- {player['name']} ({player['position']}, {player['team']}){status} - Avg: {player['avg_points']:.1f} pts\n"
+        
+        prompt += "\n=== TOP 20 AVAILABLE FREE AGENTS ===\n"
+        for player in data['free_agents']:
+            prompt += f"- {player['name']} ({player['position']}, {player['team']}) - Avg: {player['avg_points']:.1f} pts\n"
+        
+        prompt += "\n\nNow provide ONE actionable suggestion for EACH team listed above."
+
         model = genai.GenerativeModel('gemini-2.0-flash-lite')
         response = model.generate_content(prompt)
         
         advice_list = parse_advice_to_json(response.text, data['teams'])
         
+        if not advice_list or len(advice_list) == 0:
+            return [{
+                "team": team['team_name'],
+                "action_type": "HOLD",
+                "suggestion": "Unable to generate suggestions at this time",
+                "reasoning": "Please try again later",
+                "roster": team['roster']
+            } for team in data['teams']]
+        
         return advice_list
     
     except Exception as e:
-        print(f"Error details: {e}")
-        return {
-            "error": str(e),
-            "message": "Unable to generate advice at this time."
-        }
+        print(f"Error in get_league_suggestions: {e}")
+        print(f"Error type: {type(e).__name__}")
+        return []
 
 if __name__ == "__main__":
     advice = get_league_suggestions()
